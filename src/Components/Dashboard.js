@@ -1,4 +1,3 @@
-// src/Dashboard.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {
@@ -12,6 +11,10 @@ import {
     Typography,
     Slider,
     Button,
+    Select,
+    MenuItem,
+    Card,
+    CardContent,
 } from '@mui/material';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
@@ -25,15 +28,15 @@ const Dashboard = () => {
     const [statusFilter, setStatusFilter] = useState('All');
     const [minValue, setMinValue] = useState(0);
     const [maxValue, setMaxValue] = useState(100000);
-    
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/crm-data'); // Correct API endpoint
+                const response = await axios.get('http://localhost:5000/crm-data');
                 setData(response.data);
                 setFilteredData(response.data);
             } catch (error) {
-                console.error("Error fetching data:", error);
+                console.error('Error fetching data:', error);
             }
         };
         fetchData();
@@ -69,46 +72,78 @@ const Dashboard = () => {
             {
                 label: 'Number of Clients',
                 data: [activeCount, inactiveCount],
-                backgroundColor: ['#4CAF50', '#F44336'],
+                backgroundColor: ['rgba(76, 175, 80, 0.8)', 'rgba(244, 67, 54, 0.8)'],
+                borderColor: ['#4CAF50', '#F44336'],
+                borderWidth: 2,
             },
         ],
     };
 
     return (
         <div style={{ padding: 20 }}>
-            <Typography variant="h4" gutterBottom>
+            <Typography variant="h4" gutterBottom align="center">
                 CRM Dashboard
             </Typography>
-            
-            <div style={{ marginBottom: 20 }}>
-                <Typography variant="h6">Filters</Typography>
-                <select onChange={(e) => setStatusFilter(e.target.value)} value={statusFilter}>
-                    <option value="All">All</option>
-                    <option value="Active">Active</option>
-                    <option value="Inactive">Inactive</option>
-                </select>
 
-                <Typography gutterBottom>Opportunity Value Range</Typography>
-                <Slider
-                    value={[minValue, maxValue]}
-                    onChange={(e, newValue) => {
-                        setMinValue(newValue[0]);
-                        setMaxValue(newValue[1]);
-                    }}
-                    valueLabelDisplay="auto"
-                    min={0}
-                    max={100000}
-                />
-                
-                <Button variant="contained" onClick={filterData}>Apply Filters</Button>
-            </div>
+            {/* Filters Section */}
+            <Card style={{ marginBottom: 20 }}>
+                <CardContent>
+                    <Typography variant="h6">Filters</Typography>
+                    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginTop: 10 }}>
+                        <Select
+                            value={statusFilter}
+                            onChange={(e) => setStatusFilter(e.target.value)}
+                            displayEmpty
+                            variant="outlined"
+                            style={{ minWidth: 150 }}
+                        >
+                            <MenuItem value="All">All</MenuItem>
+                            <MenuItem value="Active">Active</MenuItem>
+                            <MenuItem value="Inactive">Inactive</MenuItem>
+                        </Select>
 
-            <Typography variant="h6">Summary</Typography>
-            <Typography>Total Clients: {totalClients}</Typography>
-            <Typography>Total Opportunity Value for Active Clients: {totalOpportunityValue}</Typography>
+                        <div style={{ flexGrow: 1 }}>
+                            <Typography gutterBottom>Opportunity Value Range</Typography>
+                            <Slider
+                                value={[minValue, maxValue]}
+                                onChange={(e, newValue) => {
+                                    setMinValue(newValue[0]);
+                                    setMaxValue(newValue[1]);
+                                }}
+                                valueLabelDisplay="auto"
+                                min={0}
+                                max={100000}
+                            />
+                        </div>
+                        <Button variant="contained" color="primary" onClick={filterData}>
+                            Apply Filters
+                        </Button>
+                    </div>
+                </CardContent>
+            </Card>
 
-            <Bar data={chartData} />
+            {/* Summary Section */}
+            <Card style={{ marginBottom: 20 }}>
+                <CardContent>
+                    <Typography variant="h6" gutterBottom>
+                        Summary
+                    </Typography>
+                    <Typography>Total Clients: {totalClients}</Typography>
+                    <Typography>Total Opportunity Value for Active Clients: {totalOpportunityValue}</Typography>
+                </CardContent>
+            </Card>
 
+            {/* Chart Section */}
+            <Card style={{ marginBottom: 20 }}>
+                <CardContent>
+                    <Typography variant="h6" gutterBottom>
+                        Client Status Distribution
+                    </Typography>
+                    <Bar data={chartData} options={{ responsive: true, plugins: { legend: { position: 'top' } } }} />
+                </CardContent>
+            </Card>
+
+            {/* Table Section */}
             <TableContainer component={Paper} style={{ marginTop: 20 }}>
                 <Table>
                     <TableHead>
@@ -122,7 +157,7 @@ const Dashboard = () => {
                     </TableHead>
                     <TableBody>
                         {filteredData.map((row) => (
-                            <TableRow key={row.id}>
+                            <TableRow key={row.id} hover>
                                 <TableCell>{row.id}</TableCell>
                                 <TableCell>{row.name}</TableCell>
                                 <TableCell>{row.email}</TableCell>

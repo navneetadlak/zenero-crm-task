@@ -1,9 +1,24 @@
 {
-    "crm-data": [
-      { "id": 1, "name": "John Doe", "email": "john@example.com", "opportunityValue": 50000, "status": "Active" },
-      { "id": 2, "name": "Jane Smith", "email": "jane@example.com", "opportunityValue": 30000, "status": "Inactive" },
-      { "id": 3, "name": "Alice Johnson", "email": "alice@example.com", "opportunityValue": 70000, "status": "Active" },
-      { "id": 4, "name": "Bob Brown", "email": "bob@example.com", "opportunityValue": 20000, "status": "Inactive" }
-    ]
-  }
-  
+  "crm-data": [
+    { "id": 1, "name": "John Doe", "email": "john@example.com", "opportunityValue": 50000, "status": "Active" },
+    { "id": 2, "name": "Jane Smith", "email": "jane@example.com", "opportunityValue": 30000, "status": "Inactive" },
+    { "id": 3, "name": "Alice Johnson", "email": "alice@example.com", "opportunityValue": 70000, "status": "Active" },
+    { "id": 4, "name": "Bob Brown", "email": "bob@example.com", "opportunityValue": 20000, "status": "Inactive" },
+    { "id": 5, "name": "Charlie White", "email": "charlie@example.com", "opportunityValue": 45000, "status": "Active" },
+    { "id": 6, "name": "Diana Prince", "email": "diana@example.com", "opportunityValue": 60000, "status": "Active" },
+    { "id": 7, "name": "Edward Green", "email": "edward@example.com", "opportunityValue": 25000, "status": "Inactive" },
+    { "id": 8, "name": "Fiona Black", "email": "fiona@example.com", "opportunityValue": 80000, "status": "Active" },
+    { "id": 9, "name": "George Blue", "email": "george@example.com", "opportunityValue": 35000, "status": "Inactive" },
+    { "id": 10, "name": "Hannah Grey", "email": "hannah@example.com", "opportunityValue": 90000, "status": "Active" },
+    { "id": 11, "name": "Ivy Scott", "email": "ivy@example.com", "opportunityValue": 40000, "status": "Inactive" },
+    { "id": 12, "name": "Jake Long", "email": "jake@example.com", "opportunityValue": 75000, "status": "Active" },
+    { "id": 13, "name": "Karen Hill", "email": "karen@example.com", "opportunityValue": 50000, "status": "Inactive" },
+    { "id": 14, "name": "Liam King", "email": "liam@example.com", "opportunityValue": 65000, "status": "Active" },
+    { "id": 15, "name": "Mia Queen", "email": "mia@example.com", "opportunityValue": 55000, "status": "Active" },
+    { "id": 16, "name": "Noah Lane", "email": "noah@example.com", "opportunityValue": 30000, "status": "Inactive" },
+    { "id": 17, "name": "Olivia Wood", "email": "olivia@example.com", "opportunityValue": 85000, "status": "Active" },
+    { "id": 18, "name": "Peter Clark", "email": "peter@example.com", "opportunityValue": 40000, "status": "Inactive" },
+    { "id": 19, "name": "Quinn Adams", "email": "quinn@example.com", "opportunityValue": 70000, "status": "Active" },
+    { "id": 20, "name": "Ruby Fox", "email": "ruby@example.com", "opportunityValue": 60000, "status": "Inactive" }
+  ]
+}
