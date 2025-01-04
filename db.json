@@ -1,0 +1,9 @@
+{
+    "crm-data": [
+      { "id": 1, "name": "John Doe", "email": "john@example.com", "opportunityValue": 50000, "status": "Active" },
+      { "id": 2, "name": "Jane Smith", "email": "jane@example.com", "opportunityValue": 30000, "status": "Inactive" },
+      { "id": 3, "name": "Alice Johnson", "email": "alice@example.com", "opportunityValue": 70000, "status": "Active" },
+      { "id": 4, "name": "Bob Brown", "email": "bob@example.com", "opportunityValue": 20000, "status": "Inactive" }
+    ]
+  }
+  
